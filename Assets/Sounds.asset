@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082e7caac678d3f4dae71e8ba2ebab25, type: 3}
+  m_Name: Sounds
+  m_EditorClassIdentifier: 
+  hit:
+  - {fileID: 8300000, guid: 6a8360dd38fc1dd4697a09001e6fbbee, type: 3}
+  defeat:
+  - {fileID: 8300000, guid: 8af7ac91a6900344eb0d13a63996be09, type: 3}
+  win:
+  - {fileID: 8300000, guid: 25c129e104a5942489d2c8b38490f869, type: 3}
+  pickUpCoin: []
+  upgrade: []
+  buySomething: []
