@@ -13,6 +13,7 @@ public class BallControl : MonoBehaviour
     private Rigidbody rb;
     private Vector3 swipeStartPos;
     private bool isSwiping = false;
+    
 
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private float minSwipeDistance = 1.0f;
@@ -52,8 +53,18 @@ public class BallControl : MonoBehaviour
                 trajectoryLineRenderer.enabled = true;
                 trajectoryLineRenderer.positionCount = 20;
             }
+            
         }
-
+        
+        if (rb.velocity.magnitude < standingThreshold ){
+            GameUI.Instance.text.gameObject.SetActive(true);
+            GameUI.Instance.text.text = "Shot";
+        }
+        else
+        {
+            GameUI.Instance.text.gameObject.SetActive(false);
+        }
+        
         if (isSwiping)
         {
             Vector3 swipeEndPos = Input.mousePosition;
@@ -92,7 +103,9 @@ public class BallControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnLevelComplete?.Invoke(this,EventArgs.Empty);
+        LevelCompleteUI.Instance.gameObject.SetActive(true);
+        Time.timeScale = 0f;
         SoundManager.Instance.PlayWinSound(Camera.main.transform.position,1f);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level " + LevelSelector.Instance.level.ToString()));
     }
 }

@@ -4,7 +4,7 @@ using System;
     using UnityEngine;
     using UnityEngine.UI;
     
-    public class PowerBarUI : MonoBehaviour
+    public class PowerBarUI : BaseUI
     {
         public static PowerBarUI Instance { get; set; }
         [SerializeField] private Image barImage;

@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
     public static SoundManager Instance { get; private set; }
     [SerializeField] private AudioClipRefsSO audioClipRefsSO;
+    public AudioSource volumeMusic;
     public float volumeSounds;
     private void Awake()
     {

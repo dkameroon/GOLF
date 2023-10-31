@@ -5,32 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelCompleteUI : MonoBehaviour
+public class LevelCompleteUI : BaseUI
 {
-    [SerializeField] private Button retryButton;
-    [SerializeField] private Button selectLevelsButton;
-    [SerializeField] private Button selectLevelsExitButton;
-    [SerializeField] private Button menuButton;
-    [SerializeField] private GameObject selectLevels;
+    public static LevelCompleteUI Instance { get; private set; }
+    [SerializeField] public Button retryLevelCompleteButton;
+    [SerializeField] public Button selectLevelsLevelCompleteButton;
+    [SerializeField] public Button selectLevelsLevelCompleteExitButton;
+    [SerializeField] public Button menuLevelCompleteButton;
+    [SerializeField] public GameObject selectLevelCompleteLevels;
 
     private void Awake()
     {
-        selectLevels.gameObject.SetActive(false);
-        retryButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        });
-        selectLevelsButton.onClick.AddListener(() =>
-        {
-            selectLevels.gameObject.SetActive(true);
-        });
-        selectLevelsExitButton.onClick.AddListener(() =>
-        {
-            selectLevels.gameObject.SetActive(false);
-        });
-        menuButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("MainMenu");
-        });
+        Instance = this;
+        
     }
 }

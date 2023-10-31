@@ -7,8 +7,8 @@ public class UniversalLevelManager : MonoBehaviour
 
     void Start()
     {
-        int level = LevelSelector.selectedLevel;
-        Debug.Log(level);
+        /*int level = LevelSelector.selectedLevel;*/
+        /*Debug.Log(level);*/
     }
 
     // Update is called once per frame
