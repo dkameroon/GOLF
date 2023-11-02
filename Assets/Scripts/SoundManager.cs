@@ -15,8 +15,9 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
         volumeSounds = PlayerPrefs.GetFloat("SoundsVolume", 1f);
+        volumeMusic.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
     }
-    
+
 
     private void PlaySound(AudioClip[] audioClipArray,Vector3 position, float volumeMultiplier = 1f)
     {

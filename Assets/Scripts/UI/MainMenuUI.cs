@@ -6,7 +6,7 @@ using UnityEngine;
 public class MainMenuUI : BaseUI
 {
     public static MainMenuUI Instance { get; private set; }
-    [SerializeField] private GameObject selectLevels;
+    public GameObject selectLevelsMenu;
 
     private void Awake()
     {
@@ -15,6 +15,6 @@ public class MainMenuUI : BaseUI
 
     private void Start()
     {
-        selectLevels.gameObject.SetActive(false);
+        selectLevelsMenu.gameObject.SetActive(false);
     }
 }

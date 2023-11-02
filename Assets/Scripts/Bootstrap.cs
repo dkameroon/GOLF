@@ -9,7 +9,7 @@ using UnityEditor.SceneManagement;
 
 public class Bootstrap : MonoBehaviour
 {
-    private const int _scenesCount = 5;
+    private const int _scenesCount = 4;
 
     public void Awake()
     {

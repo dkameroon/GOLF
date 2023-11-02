@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         SettingsUI.Instance.SliderMusic.onValueChanged.AddListener(HandleMusicVolumeChanged);
         SettingsUI.Instance.SliderSounds.onValueChanged.AddListener(HandleSoundsVolumeChanged);
         GameUI.Instance.countOfShots.text = count.ToString();
+        
         SettingsUI.Instance.gameObject.SetActive(false);
         PauseUI.Instance.gameObject.SetActive(false);
         LevelCompleteUI.Instance.gameObject.SetActive(false);
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         });
         PauseUI.Instance.retryPauseButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelSelector.Instance.RestartActiveLevel();
         });
         PauseUI.Instance.settingsButton.onClick.AddListener(() =>
         {
@@ -56,7 +57,10 @@ public class GameManager : MonoBehaviour
         });
         PauseUI.Instance.menuPauseButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("MainMenu");
+            LevelSelector.Instance.SceneUnload();
+            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
+            MainMenuUI.Instance.gameObject.SetActive(true);
+            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
         });
         SettingsUI.Instance.closeSettingsButton.onClick.AddListener(() =>
         {
@@ -65,7 +69,7 @@ public class GameManager : MonoBehaviour
         });
         LevelCompleteUI.Instance.retryLevelCompleteButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelSelector.Instance.RestartActiveLevel();
         });
         LevelCompleteUI.Instance.selectLevelsLevelCompleteButton.onClick.AddListener(() =>
         {
@@ -77,11 +81,14 @@ public class GameManager : MonoBehaviour
         });
         LevelCompleteUI.Instance.menuLevelCompleteButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("MainMenu");
+            LevelSelector.Instance.SceneUnload();
+            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
+            MainMenuUI.Instance.gameObject.SetActive(true);
+            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
         });
         GameOverUI.Instance.retryGameOverButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelSelector.Instance.RestartActiveLevel();
         });
         GameOverUI.Instance.selectLevelsGameOverButton.onClick.AddListener(() =>
         {
@@ -93,7 +100,10 @@ public class GameManager : MonoBehaviour
         });
         GameOverUI.Instance.menuGameOverButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("MainMenu");
+            LevelSelector.Instance.SceneUnload();
+            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
+            MainMenuUI.Instance.gameObject.SetActive(true);
+            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
         });
     }
 

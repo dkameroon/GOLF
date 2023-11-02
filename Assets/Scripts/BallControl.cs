@@ -106,6 +106,5 @@ public class BallControl : MonoBehaviour
         LevelCompleteUI.Instance.gameObject.SetActive(true);
         Time.timeScale = 0f;
         SoundManager.Instance.PlayWinSound(Camera.main.transform.position,1f);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level " + LevelSelector.Instance.level.ToString()));
     }
 }
