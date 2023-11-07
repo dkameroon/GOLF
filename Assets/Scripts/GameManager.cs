@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public event EventHandler OnGameOver;
     [SerializeField] private int count;
+    [SerializeField] private int countTo3Stars;
+    [SerializeField] private int countTo2Stars;
     
     private void Awake()
     {
@@ -118,6 +120,22 @@ public class GameManager : MonoBehaviour
             SoundManager.Instance.PlayDefeatSound(Camera.main.transform.position,0.5f);
         }
         
+    }
+
+    public void StarsEarned()
+    {
+        if (count == countTo3Stars)
+        {
+            StarsHandler.Instance.star3Condition = true;
+        }
+        else if (count == countTo2Stars)
+        {
+            StarsHandler.Instance.star2Condition = true;
+        }
+        else
+        {
+            StarsHandler.Instance.star1Condition = true;
+        }
     }
 
     public int Count()

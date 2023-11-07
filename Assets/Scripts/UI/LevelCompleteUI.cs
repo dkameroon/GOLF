@@ -13,6 +13,7 @@ public class LevelCompleteUI : BaseUI
     [SerializeField] public Button selectLevelsLevelCompleteExitButton;
     [SerializeField] public Button menuLevelCompleteButton;
     [SerializeField] public GameObject selectLevelCompleteLevels;
+    [SerializeField] public GameObject starsHolderLevelComplete;
 
     private void Awake()
     {

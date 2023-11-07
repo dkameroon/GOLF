@@ -16,12 +16,12 @@ public class GameSceneManager : MonoBehaviour
     
     public void LoadScene(string sceneName, LoadSceneMode loadMode = LoadSceneMode.Single)
     {
-        SceneManager.LoadScene(sceneName, loadMode);
+        SceneManager.LoadSceneAsync(sceneName, loadMode);
     }
     
     public void LoadSceneAdditive(string sceneName)
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
     }
     
     public void UnloadScene(string sceneName)
