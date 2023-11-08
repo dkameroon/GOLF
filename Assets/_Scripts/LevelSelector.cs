@@ -66,8 +66,8 @@ public class LevelSelector : MonoBehaviour
             if (!string.IsNullOrEmpty(activeLevelName))
             {
                 SceneUnload();
-                GameSceneManager.Instance.LoadScene(activeLevelName, LoadSceneMode.Additive);
                 StarsHandler.Instance.RestartAnimations();
+                GameSceneManager.Instance.LoadScene(activeLevelName, LoadSceneMode.Additive);
                 /*SceneManager.SetActiveScene(SceneManager.GetSceneByName(activeLevelName));*/
                 Debug.Log(activeLevelName);
                 isLoaded = false;
@@ -101,6 +101,7 @@ public class LevelSelector : MonoBehaviour
         
         if (!isLoaded)
         {
+            StarsHandler.Instance.RestartAnimations();
             SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
             isLoaded = true;
             GameUI.Instance.gameObject.SetActive(true);

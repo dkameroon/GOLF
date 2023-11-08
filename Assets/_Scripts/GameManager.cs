@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StarsHandler.Instance.RestartAnimations();
         isVictory = false;
         Time.timeScale = 1f;
         BallControl.Instance.OnShooting += BallControl_OnShooting;
