@@ -103,11 +103,6 @@ public class BallControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LevelCompleteUI.Instance.gameObject.SetActive(true);
-        GameManager.Instance.StarsEarned();
-        Time.timeScale = 0f;
-        GameUI.Instance.text.gameObject.SetActive(false);
-        GameUI.Instance.countOfShots.gameObject.SetActive(false);
-        SoundManager.Instance.PlayWinSound(Camera.main.transform.position,1f);
+        GameManager.Instance.Victory();
     }
 }

@@ -20,6 +20,9 @@ public class StarsHandler : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("1 star " + star1Condition);
+        Debug.Log("2 star " + star2Condition);
+        Debug.Log("3 star " + star3Condition);
         if (star1Condition)
         {
             StartCoroutine(PlayStarAnimation(0, true, 0f));
@@ -41,6 +44,15 @@ public class StarsHandler : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(delay);
         starAnimators[starIndex].SetBool("isEarned", isEarned);
+    }
+
+    public void RestartAnimations()
+    {
+        for (int i = 0; i < starAnimators.Length; i++)
+        {
+            starAnimators[i].SetBool("isEarned", false);
+            starAnimators[i].Play("StarIdle");
+        }
     }
     
     

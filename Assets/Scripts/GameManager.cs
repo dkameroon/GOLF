@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int count;
     [SerializeField] private int countTo3Stars;
     [SerializeField] private int countTo2Stars;
+
+    public bool isVictory = false;
     
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        isVictory = false;
         Time.timeScale = 1f;
         BallControl.Instance.OnShooting += BallControl_OnShooting;
         SettingsUI.Instance.SliderMusic.onValueChanged.AddListener(HandleMusicVolumeChanged);
@@ -38,7 +41,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             PauseUI.Instance.gameObject.SetActive(true);
         });
-        Debug.Log(PauseUI.Instance);
         PauseUI.Instance.continueButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
@@ -59,10 +61,7 @@ public class GameManager : MonoBehaviour
         });
         PauseUI.Instance.menuPauseButton.onClick.AddListener(() =>
         {
-            LevelSelector.Instance.SceneUnload();
-            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
-            MainMenuUI.Instance.gameObject.SetActive(true);
-            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
+            LevelSelector.Instance.LoadMenu();
         });
         SettingsUI.Instance.closeSettingsButton.onClick.AddListener(() =>
         {
@@ -83,10 +82,7 @@ public class GameManager : MonoBehaviour
         });
         LevelCompleteUI.Instance.menuLevelCompleteButton.onClick.AddListener(() =>
         {
-            LevelSelector.Instance.SceneUnload();
-            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
-            MainMenuUI.Instance.gameObject.SetActive(true);
-            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
+            LevelSelector.Instance.LoadMenu();
         });
         GameOverUI.Instance.retryGameOverButton.onClick.AddListener(() =>
         {
@@ -102,10 +98,7 @@ public class GameManager : MonoBehaviour
         });
         GameOverUI.Instance.menuGameOverButton.onClick.AddListener(() =>
         {
-            LevelSelector.Instance.SceneUnload();
-            SceneManager.LoadScene("MainMenu",LoadSceneMode.Additive);
-            MainMenuUI.Instance.gameObject.SetActive(true);
-            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
+            LevelSelector.Instance.LoadMenu();
         });
     }
 
@@ -121,9 +114,29 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    
 
+    public void Victory()
+    {
+        if (isVictory)
+        {
+            return;
+        }
+
+        isVictory = true;
+        LevelCompleteUI.Instance.gameObject.SetActive(true);
+        StarsEarned();
+        Time.timeScale = 0f;
+        SoundManager.Instance.PlayWinSound(Camera.main.transform.position,1f);
+        
+    }
+    
     public void StarsEarned()
     {
+        StarsHandler.Instance.star1Condition = false;
+        StarsHandler.Instance.star2Condition = false;
+        StarsHandler.Instance.star3Condition = false;
+        
         if (count == countTo3Stars)
         {
             StarsHandler.Instance.star3Condition = true;
@@ -146,6 +159,22 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         BallControl.Instance.OnShooting -= BallControl_OnShooting;
+        SettingsUI.Instance.SliderMusic.onValueChanged.RemoveListener(HandleMusicVolumeChanged);
+        SettingsUI.Instance.SliderSounds.onValueChanged.RemoveListener(HandleSoundsVolumeChanged);
+        GameUI.Instance.pauseGameButton.onClick.RemoveAllListeners();
+        PauseUI.Instance.continueButton.onClick.RemoveAllListeners();
+        PauseUI.Instance.retryPauseButton.onClick.RemoveAllListeners();
+        PauseUI.Instance.settingsButton.onClick.RemoveAllListeners();
+        PauseUI.Instance.menuPauseButton.onClick.RemoveAllListeners();
+        SettingsUI.Instance.closeSettingsButton.onClick.RemoveAllListeners();
+        LevelCompleteUI.Instance.retryLevelCompleteButton.onClick.RemoveAllListeners();
+        LevelCompleteUI.Instance.selectLevelsLevelCompleteButton.onClick.RemoveAllListeners();
+        LevelCompleteUI.Instance.selectLevelsLevelCompleteExitButton.onClick.RemoveAllListeners();
+        LevelCompleteUI.Instance.menuLevelCompleteButton.onClick.RemoveAllListeners();
+        GameOverUI.Instance.retryGameOverButton.onClick.RemoveAllListeners();
+        GameOverUI.Instance.selectLevelsGameOverButton.onClick.RemoveAllListeners();
+        GameOverUI.Instance.selectLevelsGameOverExitButton.onClick.RemoveAllListeners();
+        GameOverUI.Instance.menuGameOverButton.onClick.RemoveAllListeners();
     }
     
     private void HandleMusicVolumeChanged(float value)
