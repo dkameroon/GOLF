@@ -2274,6 +2274,14 @@ PrefabInstance:
       propertyPath: count
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2729669874810345971, guid: e839704fc6578b043be6291087f5185b, type: 3}
+      propertyPath: countTo2Stars
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729669874810345971, guid: e839704fc6578b043be6291087f5185b, type: 3}
+      propertyPath: countTo3Stars
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4752964858362247483, guid: e839704fc6578b043be6291087f5185b, type: 3}
       propertyPath: m_Name
       value: GameManager

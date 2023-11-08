@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -49,19 +50,12 @@ public class LevelSelector : MonoBehaviour
         {
             activeScenes[i] = SceneManager.GetSceneAt(i);
         }
-
-        if (isLoaded)
+        foreach (Scene scene in activeScenes)
         {
-            foreach (Scene scene in activeScenes)
-            {
-                if (scene.name.Contains("Level"))
+                if (scene.name.StartsWith("Level "))
                 {
                     SceneManager.UnloadSceneAsync(scene.name);
                 }
-            }
-
-            SceneManager.GetActiveScene();
-            isLoaded = false;
         }
     }
 
@@ -95,16 +89,19 @@ public class LevelSelector : MonoBehaviour
     
     void LoadLevel(int levelIndex, string levelName)
     {
+        SceneUnload();
         activeLevelName = levelName;
+        
         if (SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE).isLoaded)
         {
             SceneManager.UnloadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE);
         }
         MainMenuUI.Instance.gameObject.SetActive(levelName.Contains(PlayerPrefsNames.MAIN_MENU_SCENE));
+        
+        
         if (!isLoaded)
         {
             SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-            /*SceneManager.SetActiveScene(SceneManager.GetSceneByName(levelName));*/
             isLoaded = true;
             GameUI.Instance.gameObject.SetActive(true);
         }
