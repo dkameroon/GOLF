@@ -96,7 +96,10 @@ public class LevelSelector : MonoBehaviour
     void LoadLevel(int levelIndex, string levelName)
     {
         activeLevelName = levelName;
-        SceneManager.UnloadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE);
+        if (SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE);
+        }
         MainMenuUI.Instance.gameObject.SetActive(levelName.Contains(PlayerPrefsNames.MAIN_MENU_SCENE));
         if (!isLoaded)
         {
