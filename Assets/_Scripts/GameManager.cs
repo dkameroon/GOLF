@@ -137,11 +137,11 @@ public class GameManager : MonoBehaviour
         StarsHandler.Instance.star2Condition = false;
         StarsHandler.Instance.star3Condition = false;
         
-        if (count == countTo3Stars)
+        if (count >= countTo3Stars)
         {
             StarsHandler.Instance.star3Condition = true;
         }
-        else if (count == countTo2Stars)
+        else if (count >= countTo2Stars)
         {
             StarsHandler.Instance.star2Condition = true;
         }

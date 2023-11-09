@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7258402127206461095}
   - component: {fileID: 3804278124859460552}
   - component: {fileID: 7337239532368031917}
+  - component: {fileID: 1063284598846237605}
   m_Layer: 5
-  m_Name: LevelSelector
+  m_Name: MainMenuLevelSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +123,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1063284598846237605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536615790023546018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.010012458, g: 0.4245283, b: 0.054366294, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6637309641142582521
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +206,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 74f779c4997a608438947c9cfac30549, type: 2}
-  m_sharedMaterial: {fileID: 4142194853052842041, guid: 74f779c4997a608438947c9cfac30549, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e01389dbbefbdb44879ebf4899ed265, type: 2}
+  m_sharedMaterial: {fileID: 4122033235319069858, guid: 9e01389dbbefbdb44879ebf4899ed265, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
