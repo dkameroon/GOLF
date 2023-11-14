@@ -85,6 +85,7 @@ public class LevelSelector : MonoBehaviour
         MainMenuUI.Instance.gameObject.SetActive(true);
         GameUI.Instance.gameObject.SetActive(false);
         MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
+        isLoaded = false;
     }
     
     void LoadLevel(int levelIndex, string levelName)

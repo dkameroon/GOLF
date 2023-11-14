@@ -103,6 +103,21 @@ public class BallControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.Victory();
+        if (other.CompareTag("Slope"))
+        {
+            rb.angularDrag = 0f;
+            rb.maxAngularVelocity = 10f;
+            rb.drag = 0f;
+        }
+        else if (other.CompareTag("Ground"))
+        {
+            rb.angularDrag = 5.0f;
+            rb.maxAngularVelocity = 10.0f;
+        }
+        else
+        {
+            GameManager.Instance.Victory();
+        }
+        
     }
 }
