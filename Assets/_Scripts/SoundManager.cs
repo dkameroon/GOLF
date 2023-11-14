@@ -21,7 +21,10 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(AudioClip[] audioClipArray,Vector3 position, float volumeMultiplier = 1f)
     {
-        AudioSource.PlayClipAtPoint(audioClipArray[Random.Range(0,audioClipArray.Length)],position,volumeMultiplier * volumeSounds);
+        AudioClip clipToPlay = audioClipArray[Random.Range(0, audioClipArray.Length)];
+
+        // Play the chosen audio clip as a one-shot without spatialization
+        volumeMusic.PlayOneShot(clipToPlay, volumeMultiplier * volumeSounds);
     }
 
     public void PlayHitSound(Vector3 position,float volume)
