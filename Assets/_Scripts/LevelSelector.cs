@@ -11,6 +11,7 @@ public class LevelSelector : MonoBehaviour
     public GameObject buttonPrefab;
     private string activeLevelName;
     private bool isLoaded = false;
+    [SerializeField] private TextMeshProUGUI levelText;
 
     private void Awake()
     {
@@ -92,6 +93,7 @@ public class LevelSelector : MonoBehaviour
     {
         SceneUnload();
         activeLevelName = levelName;
+        levelText.text = "0" + (levelIndex - 3).ToString();
         
         if (SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE).isLoaded)
         {

@@ -58,7 +58,7 @@ public class BallControl : MonoBehaviour
         
         if (rb.velocity.magnitude < standingThreshold ){
             GameUI.Instance.text.gameObject.SetActive(true);
-            GameUI.Instance.text.text = "Shot";
+            GameUI.Instance.text.text = "You can hit!";
         }
         else
         {
