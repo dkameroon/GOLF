@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameUI : BaseUI
@@ -11,7 +12,8 @@ public class GameUI : BaseUI
     
     [SerializeField] public TextMeshProUGUI countOfShots;
     [SerializeField] public Button pauseGameButton;
-    [SerializeField] public TextMeshProUGUI text;
+    [SerializeField] public TextMeshProUGUI textYouCanShoot;
+    [SerializeField] public TextMeshProUGUI textOfLevel;
 
 
     private void Awake()

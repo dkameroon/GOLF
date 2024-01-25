@@ -57,12 +57,12 @@ public class BallControl : MonoBehaviour
         }
         
         if (rb.velocity.magnitude < standingThreshold ){
-            GameUI.Instance.text.gameObject.SetActive(true);
-            GameUI.Instance.text.text = "You can hit!";
+            GameUI.Instance.textYouCanShoot.gameObject.SetActive(true);
+            GameUI.Instance.textYouCanShoot.text = "You can hit!";
         }
         else
         {
-            GameUI.Instance.text.gameObject.SetActive(false);
+            GameUI.Instance.textYouCanShoot.gameObject.SetActive(false);
         }
         
         if (isSwiping)

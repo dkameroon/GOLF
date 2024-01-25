@@ -2237,7 +2237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countOfShots: {fileID: 1244457401}
   pauseGameButton: {fileID: 405340719}
-  text: {fileID: 139540879}
+  textYouCanShoot: {fileID: 139540879}
+  textOfLevel: {fileID: 1187068215}
 --- !u!1 &478904788
 GameObject:
   m_ObjectHideFlags: 0
