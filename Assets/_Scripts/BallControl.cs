@@ -81,6 +81,7 @@ public class BallControl : MonoBehaviour
 
             Vector3 trajectoryEndpoint = transform.position + forceDirection * trajectoryLength;
 
+            trajectoryLineRenderer.positionCount = 2;
             trajectoryLineRenderer.SetPosition(0, transform.position);
             trajectoryLineRenderer.SetPosition(1, trajectoryEndpoint);
 

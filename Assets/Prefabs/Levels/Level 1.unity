@@ -2291,11 +2291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1104563156571496207, guid: 6a20eb32ae0f69246aae92d2cd113d4c, type: 3}
       propertyPath: m_PreviewTimeScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1104563156571496207, guid: 6a20eb32ae0f69246aae92d2cd113d4c, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.5018896
+      value: 0.5056603
       objectReference: {fileID: 0}
     - target: {fileID: 1104563156571496207, guid: 6a20eb32ae0f69246aae92d2cd113d4c, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
@@ -2304,6 +2304,10 @@ PrefabInstance:
     - target: {fileID: 3763938410196351630, guid: 6a20eb32ae0f69246aae92d2cd113d4c, type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493320253396531831, guid: 6a20eb32ae0f69246aae92d2cd113d4c, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6099,6 +6103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartWithBorders
       objectReference: {fileID: 0}
+    - target: {fileID: 1955225467589693310, guid: fc52735342b99d546afbb94c5adb315e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d73461bcd027fee4f8d08709d56e88c5, type: 2}
     - target: {fileID: 7101654451532992170, guid: fc52735342b99d546afbb94c5adb315e, type: 3}
       propertyPath: m_RootOrder
       value: -1
