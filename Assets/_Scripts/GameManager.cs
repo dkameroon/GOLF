@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour
             SettingsUI.Instance.gameObject.SetActive(false);
             PlayerPrefs.Save();
         });
+        LevelCompleteUI.Instance.nextLvlLevelCompleteButton.onClick.AddListener(() =>
+        {
+            LevelSelector.Instance.LoadNextLevel();
+        });
         LevelCompleteUI.Instance.retryLevelCompleteButton.onClick.AddListener(() =>
         {
             LevelSelector.Instance.RestartActiveLevel();
@@ -167,6 +171,7 @@ public class GameManager : MonoBehaviour
         PauseUI.Instance.settingsButton.onClick.RemoveAllListeners();
         PauseUI.Instance.menuPauseButton.onClick.RemoveAllListeners();
         SettingsUI.Instance.closeSettingsButton.onClick.RemoveAllListeners();
+        LevelCompleteUI.Instance.nextLvlLevelCompleteButton.onClick.RemoveAllListeners();
         LevelCompleteUI.Instance.retryLevelCompleteButton.onClick.RemoveAllListeners();
         LevelCompleteUI.Instance.selectLevelsLevelCompleteButton.onClick.RemoveAllListeners();
         LevelCompleteUI.Instance.selectLevelsLevelCompleteExitButton.onClick.RemoveAllListeners();

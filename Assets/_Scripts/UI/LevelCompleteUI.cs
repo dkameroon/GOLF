@@ -12,6 +12,7 @@ public class LevelCompleteUI : BaseUI
     [SerializeField] public Button selectLevelsLevelCompleteButton;
     [SerializeField] public Button selectLevelsLevelCompleteExitButton;
     [SerializeField] public Button menuLevelCompleteButton;
+    [SerializeField] public Button nextLvlLevelCompleteButton;
     [SerializeField] public GameObject selectLevelCompleteLevels;
     [SerializeField] public GameObject starsHolderLevelComplete;
 
