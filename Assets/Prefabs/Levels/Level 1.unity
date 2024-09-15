@@ -1753,6 +1753,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7771813635134517084, guid: a72e08931523c604e8e70daeb6a038df, type: 3}
   m_PrefabInstance: {fileID: 427018595}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &427018597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 371201078729534481, guid: a72e08931523c604e8e70daeb6a038df, type: 3}
+  m_PrefabInstance: {fileID: 427018595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430615160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,6 +2308,9 @@ MonoBehaviour:
     x: 1
     y: 0
     z: 1
+  hole: {fileID: 427018597}
+  cameraHeight: 5
+  smoothSpeed: 0.125
 --- !u!1 &889263150
 GameObject:
   m_ObjectHideFlags: 0
