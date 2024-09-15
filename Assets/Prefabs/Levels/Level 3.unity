@@ -233,6 +233,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6948021638901548134, guid: e24484b29e7c7b04680c23c7dfb2f163, type: 3}
   m_PrefabInstance: {fileID: 118345743}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &118345745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7163727569229878276, guid: e24484b29e7c7b04680c23c7dfb2f163, type: 3}
+  m_PrefabInstance: {fileID: 118345743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &195900540
 Mesh:
   m_ObjectHideFlags: 0
@@ -2417,6 +2422,11 @@ MonoBehaviour:
     x: 1
     y: 0
     z: 1
+  hole: {fileID: 118345745}
+  smoothSpeed: 0.125
+  distanceAboveBall: 3
+  distanceBehindBall: 5
+  bottomScreenIndent: 1
 --- !u!1 &889263150
 GameObject:
   m_ObjectHideFlags: 0
