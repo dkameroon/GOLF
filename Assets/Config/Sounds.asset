@@ -21,3 +21,5 @@ MonoBehaviour:
   pickUpCoin: []
   upgrade: []
   buySomething: []
+  buttonClick:
+  - {fileID: 8300000, guid: 5c9c6e2c0554ae44b8eb51a120dc6508, type: 3}

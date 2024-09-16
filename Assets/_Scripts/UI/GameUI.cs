@@ -14,6 +14,8 @@ public class GameUI : BaseUI
     [SerializeField] public Button pauseGameButton;
     [SerializeField] public TextMeshProUGUI textYouCanShoot;
     [SerializeField] public TextMeshProUGUI textOfLevel;
+    [SerializeField] public Button rotateLeftButton;
+    [SerializeField] public Button rotateRightButton;
 
 
     private void Awake()

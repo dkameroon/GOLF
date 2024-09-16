@@ -22,8 +22,6 @@ public class SoundManager : MonoBehaviour
     private void PlaySound(AudioClip[] audioClipArray,Vector3 position, float volumeMultiplier = 1f)
     {
         AudioClip clipToPlay = audioClipArray[Random.Range(0, audioClipArray.Length)];
-
-        // Play the chosen audio clip as a one-shot without spatialization
         volumeMusic.PlayOneShot(clipToPlay, volumeMultiplier * volumeSounds);
     }
 
@@ -45,6 +43,11 @@ public class SoundManager : MonoBehaviour
     public void PlayWinSound(Vector3 position,float volume)
     {
         PlaySound(audioClipRefsSO.win,position, volume);
+    }
+    
+    public void PlayButtonSound(Vector3 position,float volume)
+    {
+        PlaySound(audioClipRefsSO.buttonClick,position, volume);
     }
     
     public void PlayLevelUpSound(Vector3 position,float volume)

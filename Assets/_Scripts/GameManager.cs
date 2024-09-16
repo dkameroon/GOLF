@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         });
         PauseUI.Instance.settingsButton.onClick.AddListener(() =>
         {
+            
             float musicVolume = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_MUSIC_VOLUME);
             float soundsVolume = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_SOUNDS_VOLUME);
 

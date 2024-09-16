@@ -64,23 +64,19 @@ public class LevelSelector : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(activeLevelName))
         {
-            // Get the current level index
             int currentLevelIndex = SceneManager.GetSceneByName(activeLevelName).buildIndex;
 
-            // Determine the next level index
+
             int nextLevelIndex = currentLevelIndex + 1;
 
-            // Check if the next level exists
             if (nextLevelIndex < SceneManager.sceneCountInBuildSettings)
             {
-                // Get the name of the next level
                 string nextLevelName = SceneUtility.GetScenePathByBuildIndex(nextLevelIndex);
                 nextLevelName = System.IO.Path.GetFileNameWithoutExtension(nextLevelName);
 
-                // Unload the current level and load the next level
                 SceneUnload();
                 activeLevelName = nextLevelName;
-                GameUI.Instance.textOfLevel.text = "0" + (nextLevelIndex - 3).ToString(); // Adjust the text for the UI
+                GameUI.Instance.textOfLevel.text = "0" + (nextLevelIndex - 3).ToString();
 
                 StarsHandler.Instance.RestartAnimations();
                 SceneManager.LoadSceneAsync(nextLevelName, LoadSceneMode.Additive);
@@ -90,7 +86,7 @@ public class LevelSelector : MonoBehaviour
             else
             {
                 Debug.Log("No more levels available.");
-                // Optionally, you could reload the current level or go back to the main menu
+                LoadMenu();
             }
         }
     }

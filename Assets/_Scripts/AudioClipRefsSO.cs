@@ -10,4 +10,5 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] pickUpCoin;
     public AudioClip[] upgrade;
     public AudioClip[] buySomething;
+    public AudioClip[] buttonClick;
 }
