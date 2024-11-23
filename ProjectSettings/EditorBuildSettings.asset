@@ -18,18 +18,18 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Prefabs/Levels/Level 1.unity
+    path: Assets/_Scenes/Levels/Level 1.unity
     guid: fa783303316fa954a9ba79e58eb88abf
   - enabled: 1
-    path: Assets/Prefabs/Levels/Level 2.unity
-    guid: 4d23ba581239eb544869daacf4885e21
+    path: Assets/_Scenes/Levels/Level 2.unity
+    guid: b29c58d330be781469782e232e6c14fa
   - enabled: 1
-    path: Assets/Prefabs/Levels/Level 3.unity
-    guid: 93bf67215e30faa4ca67a9a503b0e888
+    path: Assets/_Scenes/Levels/Level 3.unity
+    guid: 9472d41474bd6294fba3867d6a8d358b
   - enabled: 1
-    path: Assets/Prefabs/Levels/Level 4.unity
-    guid: f6499f79b6dc4804b80862f350f0f990
+    path: Assets/_Scenes/Levels/Level 4.unity
+    guid: b3eed43c670dd6346970d0303f40a8c3
   - enabled: 1
-    path: Assets/Prefabs/Levels/Level 5.unity
-    guid: 6aaebfcce30dba64b99179beb8ebe6dc
+    path: Assets/_Scenes/Levels/Level 5.unity
+    guid: 083fae48b36d49841a60c2f4ecc2b04a
   m_configObjects: {}

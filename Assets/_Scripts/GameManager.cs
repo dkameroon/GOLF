@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-    [SerializeField] private int count;
-    [SerializeField] private int countTo3Stars;
-    [SerializeField] private int countTo2Stars;
+    public LevelCountData levelCountData;
+    
+    public int count;
+    private int countTo3Stars;
+    private int countTo2Stars;
 
     public bool isVictory = false;
     
@@ -25,10 +27,8 @@ public class GameManager : MonoBehaviour
     {
         isVictory = false;
         Time.timeScale = 1f;
-        BallControl.Instance.OnShooting += BallControl_OnShooting;
         SettingsUI.Instance.SliderMusic.onValueChanged.AddListener(HandleMusicVolumeChanged);
         SettingsUI.Instance.SliderSounds.onValueChanged.AddListener(HandleSoundsVolumeChanged);
-        GameUI.Instance.countOfShots.text = count.ToString();
         
         SettingsUI.Instance.gameObject.SetActive(false);
         PauseUI.Instance.gameObject.SetActive(false);
@@ -106,19 +106,30 @@ public class GameManager : MonoBehaviour
             LevelSelector.Instance.LoadMenu();
         });
     }
-
-    private void BallControl_OnShooting(object sender, EventArgs e)
+    
+    public void LoadLevelData()
     {
-        count--;
-        GameUI.Instance.countOfShots.text = count.ToString();
-        if (count <= 0)
-        {
-            GameOverUI.Instance.gameObject.SetActive(true);
-            Time.timeScale = 0f;
-            SoundManager.Instance.PlayDefeatSound(Camera.main.transform.position,0.5f);
-        }
+       
+        string currentLevelName = SceneManager.GetActiveScene().name;
         
+        LevelCountData.LevelCountsData currentLevelData = levelCountData.levelCountsData.Find(level => level.levelName == currentLevelName);
+        if (currentLevelData != null)
+        {
+            count = currentLevelData.counts;
+            countTo3Stars = currentLevelData.countTo3Stars;
+            countTo2Stars = currentLevelData.countTo2Stars;
+            GameUI.Instance.countOfShots.text = count.ToString();
+        }
+        else
+        {
+            Debug.LogError("Level data not found for: " + currentLevelName);
+            count = 6;
+            countTo3Stars = 3;
+            countTo2Stars = 2;
+            GameUI.Instance.countOfShots.text = count.ToString();
+        }
     }
+    
     
 
     public void Victory()
@@ -163,7 +174,6 @@ public class GameManager : MonoBehaviour
     
     private void OnDestroy()
     {
-        BallControl.Instance.OnShooting -= BallControl_OnShooting;
         SettingsUI.Instance.SliderMusic.onValueChanged.RemoveListener(HandleMusicVolumeChanged);
         SettingsUI.Instance.SliderSounds.onValueChanged.RemoveListener(HandleSoundsVolumeChanged);
         GameUI.Instance.pauseGameButton.onClick.RemoveAllListeners();

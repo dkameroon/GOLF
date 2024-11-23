@@ -29,11 +29,7 @@ public class CameraFollow : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         
-        cameraComponent = GetComponent<Camera>();
-        if (cameraComponent == null)
-        {
-            Debug.LogError("No Camera component found on the CameraFollow GameObject. Please add a Camera component.");
-        }
+        
     }
 
     public void SetTarget(GameObject target)

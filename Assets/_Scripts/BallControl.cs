@@ -101,7 +101,14 @@ public class BallControl : MonoBehaviour
 
             if (Time.timeScale > 0)
             {
-                OnShooting?.Invoke(this, EventArgs.Empty); 
+                GameManager.Instance.count--;
+                GameUI.Instance.countOfShots.text = GameManager.Instance.count.ToString();
+                if (GameManager.Instance.count <= 0)
+                {
+                    GameOverUI.Instance.gameObject.SetActive(true);
+                    Time.timeScale = 0f;
+                    SoundManager.Instance.PlayDefeatSound(Camera.main.transform.position,0.5f);
+                }
                 SoundManager.Instance.PlayHitSound(transform.position, 1f); 
             }
         }

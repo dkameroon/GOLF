@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd693ddf65de9a4eb567a610b1c1076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 5
+  levelCountData: {fileID: 11400000, guid: 332c7a62deefc5347964c47cfba4af8f, type: 2}
+  count: 6
+  isVictory: 0

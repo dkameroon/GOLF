@@ -34,9 +34,9 @@ public class LevelSelector : MonoBehaviour
                     GameObject button = Instantiate(buttonPrefab, transform);
                     Button buttonComponent = button.GetComponent<Button>();
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-                    
+
                     buttonText.text = levelNumber.ToString();
-                    
+
                     int levelIndex = i;
                     buttonComponent.onClick.AddListener(() => LoadLevel(levelIndex, levelName));
                 }
@@ -53,20 +53,18 @@ public class LevelSelector : MonoBehaviour
         }
         foreach (Scene scene in activeScenes)
         {
-                if (scene.name.StartsWith("Level "))
-                {
-                    SceneManager.UnloadSceneAsync(scene.name);
-                }
+            if (scene.name.StartsWith("Level "))
+            {
+                SceneManager.UnloadSceneAsync(scene.name);
+            }
         }
     }
-    
+
     public void LoadNextLevel()
     {
         if (!string.IsNullOrEmpty(activeLevelName))
         {
             int currentLevelIndex = SceneManager.GetSceneByName(activeLevelName).buildIndex;
-
-
             int nextLevelIndex = currentLevelIndex + 1;
 
             if (nextLevelIndex < SceneManager.sceneCountInBuildSettings)
@@ -74,14 +72,9 @@ public class LevelSelector : MonoBehaviour
                 string nextLevelName = SceneUtility.GetScenePathByBuildIndex(nextLevelIndex);
                 nextLevelName = System.IO.Path.GetFileNameWithoutExtension(nextLevelName);
 
-                SceneUnload();
-                activeLevelName = nextLevelName;
-                GameUI.Instance.textOfLevel.text = "0" + (nextLevelIndex - 3).ToString();
-
-                StarsHandler.Instance.RestartAnimations();
-                SceneManager.LoadSceneAsync(nextLevelName, LoadSceneMode.Additive);
-
-                Debug.Log($"Loading next level: {nextLevelName}");
+                LoadLevel(nextLevelIndex, nextLevelName);
+                GameManager.Instance.LoadLevelData();
+                Time.timeScale = 1f;
             }
             else
             {
@@ -93,53 +86,64 @@ public class LevelSelector : MonoBehaviour
 
     public void RestartActiveLevel()
     {
-        if (isLoaded)
+        if (!string.IsNullOrEmpty(activeLevelName))
         {
-            if (!string.IsNullOrEmpty(activeLevelName))
-            {
-                SceneUnload();
-                StarsHandler.Instance.RestartAnimations();
-                GameSceneManager.Instance.LoadScene(activeLevelName, LoadSceneMode.Additive);
-                /*SceneManager.SetActiveScene(SceneManager.GetSceneByName(activeLevelName));*/
-                Debug.Log(activeLevelName);
-                isLoaded = false;
-            }
+            LoadLevel(SceneManager.GetSceneByName(activeLevelName).buildIndex, activeLevelName);
         }
-
-        isLoaded = true;
-
     }
-    
 
     public void LoadMenu()
     {
         SceneUnload();
-        SceneManager.LoadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE, LoadSceneMode.Additive);
-        MainMenuUI.Instance.gameObject.SetActive(true);
-        GameUI.Instance.gameObject.SetActive(false);
-        MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
-        isLoaded = false;
+    
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE, LoadSceneMode.Additive);
+        asyncLoad.completed += (asyncOperation) =>
+        {
+            Scene loadedScene = SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE);
+            SceneManager.SetActiveScene(loadedScene);
+
+            MainMenuUI.Instance.gameObject.SetActive(true);
+            GameUI.Instance.gameObject.SetActive(false);
+            MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
+            LevelCompleteUI.Instance.gameObject.SetActive(false);
+            PauseUI.Instance.gameObject.SetActive(false);
+
+            isLoaded = false;
+        };
     }
     
-    void LoadLevel(int levelIndex, string levelName)
+    private void LoadLevel(int levelIndex, string levelName)
     {
         SceneUnload();
-        activeLevelName = levelName;
-        GameUI.Instance.textOfLevel.text = "0" + (levelIndex - 3).ToString();
-        
+
         if (SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE).isLoaded)
         {
             SceneManager.UnloadSceneAsync(PlayerPrefsNames.MAIN_MENU_SCENE);
         }
-        MainMenuUI.Instance.gameObject.SetActive(levelName.Contains(PlayerPrefsNames.MAIN_MENU_SCENE));
-        
-        
-        if (!isLoaded)
+
+        activeLevelName = levelName;
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        asyncLoad.completed += (asyncOperation) =>
         {
-            StarsHandler.Instance.RestartAnimations();
-            SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-            isLoaded = true;
-            GameUI.Instance.gameObject.SetActive(true);
-        }
+            Scene loadedScene = SceneManager.GetSceneByName(levelName);
+            SceneManager.SetActiveScene(loadedScene);
+
+            GameUI.Instance.textOfLevel.text = "0" + (levelIndex - 3).ToString();
+
+            MainMenuUI.Instance.gameObject.SetActive(levelName.Contains(PlayerPrefsNames.MAIN_MENU_SCENE));
+
+            GameManager.Instance.LoadLevelData();
+
+            if (!isLoaded)
+            {
+                StarsHandler.Instance.RestartAnimations();
+                GameUI.Instance.gameObject.SetActive(true);
+                isLoaded = true;
+                LevelCompleteUI.Instance.gameObject.SetActive(false);
+                PauseUI.Instance.gameObject.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        };
     }
 }
