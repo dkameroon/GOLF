@@ -4091,6 +4091,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7480400034099250290, guid: e24484b29e7c7b04680c23c7dfb2f163, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.216
+      objectReference: {fileID: 0}
     - target: {fileID: 7721285714880765660, guid: e24484b29e7c7b04680c23c7dfb2f163, type: 3}
       propertyPath: m_Name
       value: RoundWithHole Variant

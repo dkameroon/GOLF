@@ -66,6 +66,7 @@ public class LevelSelector : MonoBehaviour
         {
             int currentLevelIndex = SceneManager.GetSceneByName(activeLevelName).buildIndex;
             int nextLevelIndex = currentLevelIndex + 1;
+            LevelCompleteUI.Instance.gameObject.SetActive(false);
 
             if (nextLevelIndex < SceneManager.sceneCountInBuildSettings)
             {
@@ -89,6 +90,10 @@ public class LevelSelector : MonoBehaviour
         if (!string.IsNullOrEmpty(activeLevelName))
         {
             LoadLevel(SceneManager.GetSceneByName(activeLevelName).buildIndex, activeLevelName);
+            GameOverUI.Instance.gameObject.SetActive(false);
+            LevelCompleteUI.Instance.gameObject.SetActive(false);
+            PauseUI.Instance.gameObject.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 
@@ -132,6 +137,7 @@ public class LevelSelector : MonoBehaviour
             GameUI.Instance.textOfLevel.text = "0" + (levelIndex - 3).ToString();
 
             MainMenuUI.Instance.gameObject.SetActive(levelName.Contains(PlayerPrefsNames.MAIN_MENU_SCENE));
+            GameOverUI.Instance.gameObject.SetActive(false);
 
             GameManager.Instance.LoadLevelData();
 

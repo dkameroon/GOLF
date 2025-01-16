@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SettingsUI.Instance.musicProcents.text = (SoundManager.Instance.volumeMusic * 100).ToString("0") + "%";
+        SettingsUI.Instance.soundsProcents.text = (SoundManager.Instance.volumeSounds * 100).ToString("0") + "%";
         isVictory = false;
         Time.timeScale = 1f;
         SettingsUI.Instance.SliderMusic.onValueChanged.AddListener(HandleMusicVolumeChanged);
@@ -195,7 +197,7 @@ public class GameManager : MonoBehaviour
     
     private void HandleMusicVolumeChanged(float value)
     {
-        SoundManager.Instance.volumeMusic.volume = value;
+        SoundManager.Instance.musicAudioSource.volume = value;
         PlayerPrefs.SetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_MUSIC_VOLUME, value);
         PlayerPrefs.Save();
         SettingsUI.Instance.musicProcents.text = (value * 100).ToString("0") + "%";
@@ -203,7 +205,7 @@ public class GameManager : MonoBehaviour
     
     private void HandleSoundsVolumeChanged(float value)
     {
-        SoundManager.Instance.volumeSounds = value;
+        SoundManager.Instance.soundEffectsAudioSource.volume = value;
         PlayerPrefs.SetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_SOUNDS_VOLUME, value);
         PlayerPrefs.Save();
         SettingsUI.Instance.soundsProcents.text = (value * 100).ToString("0") + "%";

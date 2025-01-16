@@ -198,7 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipRefsSO: {fileID: 11400000, guid: 20528f1ce94c5b244abe59a7f1719d58, type: 2}
-  volumeMusic: {fileID: 1904048637}
+  musicAudioSource: {fileID: 1904048637}
+  soundEffectsAudioSource: {fileID: 671098606}
+  volumeMusic: 0
   volumeSounds: 1
 --- !u!4 &671098605
 Transform:
@@ -341,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCountData: {fileID: 11400000, guid: 332c7a62deefc5347964c47cfba4af8f, type: 2}
+  count: 0
   isVictory: 0
 --- !u!4 &1425248130
 Transform:
@@ -384,7 +387,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 59e601006f6596b409e5aa0782ee63b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 73de57980a029e84dab6fd930987b717, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
