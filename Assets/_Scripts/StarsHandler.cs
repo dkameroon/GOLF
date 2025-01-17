@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StarsHandler : MonoBehaviour
 {
     public static StarsHandler Instance { get; private set; }
     
     public Animator[] starAnimators;
+    public Image[] starImages;
+    private Color defaultColor = new Color(51f / 255f, 51f / 255f, 51f / 255f);
     
     public bool star1Condition = false;
     public bool star2Condition = false;
@@ -43,6 +46,14 @@ public class StarsHandler : MonoBehaviour
         starAnimators[starIndex].SetBool("isEarned", isEarned);
     }
 
+    public void ResetStarColors()
+    {
+        for (int i = 0; i < starImages.Length; i++)
+        {
+            starImages[i].color = defaultColor;
+        }
+    }
+    
     public void RestartAnimations()
     {
         for (int i = 0; i < starAnimators.Length; i++)

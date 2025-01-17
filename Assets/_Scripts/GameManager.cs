@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         PauseUI.Instance.retryPauseButton.onClick.AddListener(() =>
         {
             LevelSelector.Instance.RestartActiveLevel();
+            StarsHandler.Instance.RestartAnimations();
         });
         PauseUI.Instance.settingsButton.onClick.AddListener(() =>
         {
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
         GameOverUI.Instance.retryGameOverButton.onClick.AddListener(() =>
         {
             LevelSelector.Instance.RestartActiveLevel();
+            
         });
         GameOverUI.Instance.selectLevelsGameOverButton.onClick.AddListener(() =>
         {
@@ -111,7 +113,9 @@ public class GameManager : MonoBehaviour
     
     public void LoadLevelData()
     {
-       
+        StarsHandler.Instance.star1Condition = false;
+        StarsHandler.Instance.star2Condition = false;
+        StarsHandler.Instance.star3Condition = false;
         string currentLevelName = SceneManager.GetActiveScene().name;
         
         LevelCountData.LevelCountsData currentLevelData = levelCountData.levelCountsData.Find(level => level.levelName == currentLevelName);
@@ -138,16 +142,18 @@ public class GameManager : MonoBehaviour
     {
         if (isVictory)
         {
+            Debug.Log("Victory already achieved. Skipping...");
             return;
         }
 
+        Debug.Log("Victory triggered!");
         isVictory = true;
         LevelCompleteUI.Instance.gameObject.SetActive(true);
         StarsEarned();
         Time.timeScale = 0f;
-        SoundManager.Instance.PlayWinSound(Camera.main.transform.position,1f);
-        
+        SoundManager.Instance.PlayWinSound(Camera.main.transform.position, 1f);
     }
+
     
     public void StarsEarned()
     {
@@ -169,6 +175,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+    
     public int Count()
     {
         return count;

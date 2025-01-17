@@ -27,8 +27,8 @@ public class SoundManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
-        volumeMusic = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_MUSIC_VOLUME, 1f);
-        volumeSounds = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_SOUNDS_VOLUME, 1f);
+        volumeMusic = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_MUSIC_VOLUME, 0.5f);
+        volumeSounds = PlayerPrefs.GetFloat(PlayerPrefsNames.PLAYER_PREFS_NAMES_SOUNDS_VOLUME, 0.5f);
 
         musicAudioSource.volume = volumeMusic;
         soundEffectsAudioSource.volume = volumeSounds;

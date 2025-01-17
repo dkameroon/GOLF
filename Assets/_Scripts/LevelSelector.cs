@@ -76,11 +76,13 @@ public class LevelSelector : MonoBehaviour
                 LoadLevel(nextLevelIndex, nextLevelName);
                 GameManager.Instance.LoadLevelData();
                 Time.timeScale = 1f;
+                GameManager.Instance.isVictory = false;
             }
             else
             {
                 Debug.Log("No more levels available.");
                 LoadMenu();
+                GameManager.Instance.isVictory = false;
             }
         }
     }
@@ -94,6 +96,8 @@ public class LevelSelector : MonoBehaviour
             LevelCompleteUI.Instance.gameObject.SetActive(false);
             PauseUI.Instance.gameObject.SetActive(false);
             Time.timeScale = 1f;
+            GameManager.Instance.isVictory = false;
+            StarsHandler.Instance.ResetStarColors();
         }
     }
 
@@ -112,7 +116,7 @@ public class LevelSelector : MonoBehaviour
             MainMenuUI.Instance.selectLevelsMenu.SetActive(false);
             LevelCompleteUI.Instance.gameObject.SetActive(false);
             PauseUI.Instance.gameObject.SetActive(false);
-
+            GameManager.Instance.isVictory = false;
             isLoaded = false;
         };
     }
@@ -120,6 +124,7 @@ public class LevelSelector : MonoBehaviour
     private void LoadLevel(int levelIndex, string levelName)
     {
         SceneUnload();
+        StarsHandler.Instance.RestartAnimations();
 
         if (SceneManager.GetSceneByName(PlayerPrefsNames.MAIN_MENU_SCENE).isLoaded)
         {
